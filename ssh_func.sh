@@ -12,8 +12,8 @@ function get_pass()
 function scp_file
 {
 	expect -c "  
-   set timeout 1
-   spawn scp -o UserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no $2 root@$1:$3
+   set timeout 10
+   spawn scp -p -o UserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no $2 root@$1:$3
    expect password: { send $SSH_PASSWORD\r }
    expect 100%
    sleep 1
