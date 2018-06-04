@@ -69,7 +69,7 @@ if [ "$1" == "" ]; then
 	exit 0
 fi
 
-MY_IP_ADDR=$(ifconfig lxcbr0 | grep -w inet | awk -F ' ' '{ gsub("addr:","", $2); print $2}')
+MY_IP_ADDR=$(ifconfig virbr0 | grep -w inet | awk -F ' ' '{ gsub("addr:","", $2); print $2}')
 
 echo "Host IP = $MY_IP_ADDR"
 echo $MY_IP_ADDR > $SHARED_DIR/.ip_addr
