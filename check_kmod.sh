@@ -6,6 +6,7 @@ MODULES_LIST=\
  ixgb.ko \
  ixgbe.ko \
  ixgbevf.ko \
+ ena.ko \
  vmxnet3.ko \
  8139cp.ko \
  8139too.ko \
@@ -13,11 +14,13 @@ MODULES_LIST=\
 hv_netvsc.ko"
 
 
-ROOTFS=$YOCTO_ROOT/tmp/work/changeling_hypervisor-spirent-linux/core-image/1.0-r0/rootfs
+KERNEL_BUILD=$YOCTO_ROOT/tmp/work/changeling_hypervisor-spirent-linux/linux-yocto/
 
-KERNEL_VER=$(ls $ROOTFS/lib/modules)
+KERNEL_VER=$(ls $KERNEL_BUILD)
 
-KMOD_DIR=$ROOTFS/lib/modules/${KENREL_VER}
+KMOD_DIR=${KERNEL_BUILD}/${KERNEL_VER}/linux-changeling_hypervisor-standard-build
+
+echo "Checking in $KMOD_DIR"
 
 cd $KMOD_DIR > /dev/null 2>&1
 
