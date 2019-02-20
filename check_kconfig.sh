@@ -32,10 +32,15 @@ CONFIG_LIST=\
  CONFIG_NET_INGRESS \
 "
 
-LINUX_YOCTO_DIR=$YOCTO_ROOT/tmp/work/changeling_hypervisor-spirent-linux/linux-yocto
-LINUX_VER=$(ls $LINUX_YOCTO_DIR)
-KBUILD_DIR=${LINUX_YOCTO_DIR}/${LINUX_VER}/linux-changeling_hypervisor-standard-build
-#echo $KBUILD_DIR
+IMAGE_NAME=changeling_hypervisor
+
+KERNEL_BUILD=$(ls -d ${YOCTO_ROOT}/tmp/work/${IMAGE_NAME}*)/linux-yocto/
+
+KERNEL_VER=$(ls $KERNEL_BUILD)
+
+KBUILD_DIR=${KERNEL_BUILD}/${KERNEL_VER}/linux-${IMAGE_NAME}-standard-build
+
+echo "Checking in $KBUILD_DIR"
 
 for i in $CONFIG_LIST
 do

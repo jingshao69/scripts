@@ -13,12 +13,13 @@ MODULES_LIST=\
  vmxnet3.ko \
 hv_netvsc.ko"
 
+IMAGE_NAME=changeling_hypervisor
 
-KERNEL_BUILD=$YOCTO_ROOT/tmp/work/changeling_hypervisor-spirent-linux/linux-yocto/
+KERNEL_BUILD=$(ls -d ${YOCTO_ROOT}/tmp/work/${IMAGE_NAME}*)/linux-yocto/
 
 KERNEL_VER=$(ls $KERNEL_BUILD)
 
-KMOD_DIR=${KERNEL_BUILD}/${KERNEL_VER}/linux-changeling_hypervisor-standard-build
+KMOD_DIR=${KERNEL_BUILD}/${KERNEL_VER}/linux-${IMAGE_NAME}-standard-build
 
 echo "Checking in $KMOD_DIR"
 
