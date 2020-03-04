@@ -8,15 +8,18 @@ install)
     ;;
 
 run)
-    echo sudo docker run -p 8888:8888 jupyter/scipy-notebook
-    sudo docker run -p 8888:8888 jupyter/scipy-notebook
+    #echo sudo docker run -p 8888:8888 jupyter/scipy-notebook
+    #sudo docker run -p 8888:8888 jupyter/scipy-notebook
+    echo sudo docker run -p 8888:8888 jupyter/scipy-notebook start.sh jupyter notebook --NotebookApp.token=''
+    sudo docker run -p 8888:8888 jupyter/scipy-notebook start.sh jupyter notebook --NotebookApp.token=''
     ;;
 
 start)
     DOCKER_ID=$(sudo docker ps -a | grep jupyter | awk '{print $1}')
     #DOCKED_ID=$(sudo docker ps | grep jupyter)
+    #sudo docker start -ai $DOCKER_ID
     echo sudo docker start $DOCKER_ID
-    sudo docker start -ai $DOCKER_ID
+    sudo docker start $DOCKER_ID
     ;;
 
 
